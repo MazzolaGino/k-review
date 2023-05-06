@@ -1,0 +1,66 @@
+{% if review %}
+    <table>
+        <tr>
+            <td><label for="review_rating">Rating:</label></td>
+            <td><input type="number" name="review_rating" id="review_rating" value="{{ review.review_rating }}"></td>
+        </tr>
+        <tr>
+            <td><label for="review_description">Description:</label></td>
+            <td>{{ fn('wp_editor', review.review_description , 'review_description', {'textarea_name': 'review_description'} ) }}</td>
+        </tr>
+        <tr>
+            <td><label for="review_positive_points">Positive Points:</label></td>
+            <td>{{ fn('wp_editor', review.review_positive_points, 'review_positive_points', {'textarea_name': 'review_positive_points'} ) }}</td>
+        </tr>
+        <tr>
+            <td><label for="review_negative_points">Negative Points:</label></td>
+            <td>{{ fn('wp_editor', review.review_negative_points, 'review_negative_points', {'textarea_name': 'review_negative_points'} ) }}</td>
+        </tr>
+        <tr>
+            <td><label for="review_game_title">Game Title:</label></td>
+            <td><input type="text" name="review_game_title" id="review_game_title" value="{{ review.review_game_title }}"></td>
+        </tr>
+        <tr>
+            <td><label for="review_developer">Developer:</label></td>
+            <td><input type="text" name="review_developer" id="review_developer" value="{{ review.review_developer }}"></td>
+        </tr>
+        <tr>
+            <td><label for="review_publisher">Publisher:</label></td>
+            <td><input type="text" name="review_publisher" id="review_publisher" value="{{ review.review_publisher }}"></td>
+        </tr>
+        <tr>
+            <td><label for="review_review_summary">Review Summary:</label></td>
+            <td>{{ fn('wp_editor', review.review_review_summary , 'review_review_summary', {'textarea_name': 'review_review_summary'} ) }}</td>
+        </tr>
+        <tr>
+            <td><label for="review_release_date_japan">Release Date (Japan):</label></td>
+            <td><input type="date" name="review_release_date_japan" id="review_release_date_japan" value="{{ review.review_release_date_japan }}"></td>
+        </tr>
+        <tr>
+            <td><label for="review_release_date_europe">Release Date (Europe):</label></td>
+            <td><input type="date" name="review_release_date_europe" id="review_release_date_europe" value="{{ review.review_release_date_europe }}"></td>
+        </tr>
+        <tr>
+            <td><label for="review_consoles">Consoles:</label></td>
+            <td>
+                {% for console_option in console_options %}
+                    <label>
+                        <input type="checkbox" name="review_console[]" value="{{ console_option }}" {% if console_option in review_consoles %}checked{% endif %}>
+                        {{ console_option }}
+                    </label>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td><label for="review_genre">Genre:</label></td>
+            <td>
+                {% for genre_option in genre_options %}
+                    <label>
+                        <input type="checkbox" name="review_genre[]" value="{{ genre_option }}" {% if genre_option in review_genres %}checked{% endif %}>
+                        {{ genre_option }}
+                    </label>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+{% endif %}
