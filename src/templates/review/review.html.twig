@@ -1,0 +1,37 @@
+{% if note %}
+	<div class="game-review">
+		<div class="review-header">
+			<h2 class="review-title">[ <span class="review-rating">{{ note }}</span> ] {{ fn('get_post_meta', post_id, 'review_game_title', true) }}</h2>
+		</div>
+		
+		<div class="review-sheet">
+		<ul>
+			<li>Date de sortie (japon) : {{ fn('get_post_meta', post_id, 'review_release_date_japan', true) }}</li>
+			<li>Date de sortie (europe) : {{ fn('get_post_meta', post_id, 'review_release_date_japan', true) }}</li>
+			<li>Développeur : {{ fn('get_post_meta', post_id, 'review_developer', true) }}</li>
+			<li>Editeur : {{ fn('get_post_meta', post_id, 'review_publisher', true) }}</li>
+			<li>Genres :{{ fn('get_post_meta', post_id, 'review_genre', true)|replace({';':', '}) }}</li>
+			<li>Consoles : {{ fn('get_post_meta', post_id, 'review_console', true)|replace({';':', '})  }}</li>
+		</ul>
+			{{ fn('get_post_meta', post_id, 'review_review_summary', true) }}
+		</div>
+		
+
+		<div class="review-summary">
+			{{ fn('get_post_meta', post_id, 'review_review_summary', true) }}
+		</div>
+		
+		
+		<div class="review-points">
+			<div class="positive-points">
+				{{ fn('get_post_meta', post_id, 'review_positive_points', true) }}
+			</div>
+			<div class="negative-points">
+				{{ fn('get_post_meta', post_id, 'review_negative_points', true) }}
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div class="clear"></div>
+{% endif %}

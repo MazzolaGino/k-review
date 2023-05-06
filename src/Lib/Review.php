@@ -97,15 +97,19 @@ class Review
         foreach ($properties as $property) {
 
             $key = $property->getName();
+            
+            if(isset($post_request[$key])) 
+            {
+                $metaValue = $post_request[$key];
 
-            $metaValue = $post_request[$key];
-
-            if (in_array($key, ['review_genre', 'review_console'])) {
-
-                $metaValue = implode(';', $metaValue);
+                if (in_array($key, ['review_genre', 'review_console'])) {
+    
+                    $metaValue = implode(';', $metaValue);
+                }
+    
+                update_post_meta($postId, $key, $metaValue);
             }
-
-            update_post_meta($postId, $key, $metaValue);
+            
         }
     }
 

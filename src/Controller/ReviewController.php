@@ -5,6 +5,7 @@ namespace KReview\Controller;
 use KLib2\Interfaces\IPath;
 use KLib2\Controller\Controller;
 use KReview\Lib\ReviewManager;
+use Timber\Timber;
 
 class ReviewController extends Controller
 {
@@ -20,15 +21,15 @@ class ReviewController extends Controller
      * @priority 10
      * @args 1
      */
-    public function reviewFields($post) 
+    public function reviewFields($post)
     {
         global $post;
 
-        add_meta_box('custom_fields_box', 'Review', function() use ($post) {
+        add_meta_box('custom_fields_box', 'Review', function () use ($post) {
             ReviewManager::renderCustomFields($post);
         }, 'post', 'normal', 'default');
     }
-    
+
     /**
      * @action add_action
      * @hook save_post
@@ -36,9 +37,30 @@ class ReviewController extends Controller
      * @args 1
      */
 
-     public function save($post_id) 
-     {
+    public function save($post_id)
+    {
         ReviewManager::saveCustomFields($post_id);
-     }
- 
+    }
+
+    /**
+     * @action add_shortcode
+     * @hook wp-review
+     * @priority 10
+     * @args 1
+     */
+    public function noreview($atts)
+    {
+        global $post;
+
+        ob_start();
+
+        $data = Timber::render($this->path->dir('templates/review/review.html.twig'), [
+            'post_id' => $post->ID,
+            'note' => get_post_meta($post->ID, 'review_rating', true)
+        ]);
+        
+        ob_end_clean();
+        
+        return $data;
+    }
 }

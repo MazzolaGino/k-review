@@ -6,8 +6,6 @@
  * Author: 
  * Author URI: 
  */
-
- /** @todo générer la dépendance automatiquement avec la dépendance de plugin */
  
  require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
 
