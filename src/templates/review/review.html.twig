@@ -7,14 +7,14 @@
 		<div class="review-sheet">
 		<ul>
 			{% set rrdj = fn('get_post_meta', post_id, 'review_release_date_japan', true) %}
-			{% if rrgj %}
-			<li><strong>Date de sortie (japon) : </strong>{{ rrdj }}</li>
+			{% if rrdj %}
+			<li><strong>Date de sortie (japon) : </strong>{{ rrdj|date("m/d/Y")  }}</li>
 			{% endif %}
 
 
 			{% set rrge = fn('get_post_meta', post_id, 'review_release_date_europe', true) %}
 			{% if rrge %}
-			<li><strong>Date de sortie (Europe) : </strong>{{ rrge }}</li>
+			<li><strong>Date de sortie (Europe) : </strong>{{ rrge|date("m/d/Y")  }}</li>
 			{% endif %}
 
 			{% set rrd = fn('get_post_meta', post_id, 'review_developer', true) %}
