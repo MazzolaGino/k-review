@@ -6,14 +6,39 @@
 		
 		<div class="review-sheet">
 		<ul>
-			<li>Date de sortie (japon) : {{ fn('get_post_meta', post_id, 'review_release_date_japan', true) }}</li>
-			<li>Date de sortie (europe) : {{ fn('get_post_meta', post_id, 'review_release_date_japan', true) }}</li>
-			<li>Développeur : {{ fn('get_post_meta', post_id, 'review_developer', true) }}</li>
-			<li>Editeur : {{ fn('get_post_meta', post_id, 'review_publisher', true) }}</li>
-			<li>Genres :{{ fn('get_post_meta', post_id, 'review_genre', true)|replace({';':', '}) }}</li>
-			<li>Consoles : {{ fn('get_post_meta', post_id, 'review_console', true)|replace({';':', '})  }}</li>
+			{% set rrdj = fn('get_post_meta', post_id, 'review_release_date_japan', true) %}
+			{% if rrgj %}
+			<li><strong>Date de sortie (japon) : </strong>{{ rrdj }}</li>
+			{% endif %}
+
+
+			{% set rrge = fn('get_post_meta', post_id, 'review_release_date_europe', true) %}
+			{% if rrge %}
+			<li><strong>Date de sortie (Europe) : </strong>{{ rrge }}</li>
+			{% endif %}
+
+			{% set rrd = fn('get_post_meta', post_id, 'review_developer', true) %}
+			{% if rrd %}
+			<li><strong>Développeur : </strong> {{ rrd }}</li>
+			{% endif %}
+
+			{% set rrp = fn('get_post_meta', post_id, 'review_publisher', true) %}
+			{% if rrp %}
+			<li><strong>Éditeur : </strong> {{ rrp }}</li>
+			{% endif %}
+
+			{% set rrg = fn('get_post_meta', post_id, 'review_genre', true) %}
+			{% if rrrrggj %}
+			<li><strong>Genres : </strong> {{ rrg|replace({';':', '}) }}</li>
+			{% endif %}
+
+			{% set rrc = fn('get_post_meta', post_id, 'review_console', true) %}
+			{% if rrc %}
+			<li><strong>Consoles : </strong> {{ rrc|replace({';':', '}) }}</li>
+			{% endif %}
+			
 		</ul>
-			{{ fn('get_post_meta', post_id, 'review_review_summary', true) }}
+			
 		</div>
 		
 
