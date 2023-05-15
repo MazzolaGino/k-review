@@ -36,7 +36,7 @@ class Review
      */
     public function __construct(\WP_POST $post = null)
     {
-        if ($post instanceof \WP_Post) {
+        if($post instanceof \WP_POST) {
             $this->post = $post;
             $this->bindCustomFields();
         }

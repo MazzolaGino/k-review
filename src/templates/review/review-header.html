@@ -1,0 +1,36 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "VideoGame",
+        "name": "{{ game_title }}",
+        "applicationCategory": "Game"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "{{ author }}"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "worstRating": "0",
+        "ratingValue": "{{ rating }}",
+        "bestRating": "10"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url }}"
+      },
+      "headline": "{{ title }}",
+      "datePublished": "{{ date }}",
+      "description": "{{ description }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "jrpgfr.net",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jrpgfr.net/wp-content/uploads/2023/01/cropped-cropped-x-logo.png"
+        }
+      }
+    }
+  </script>
