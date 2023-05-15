@@ -78,10 +78,10 @@ class ReviewController extends Controller
         $context =[
 
             'rating'        => \get_post_meta($post->ID, 'review_rating', true),
-            'game_title'    => \get_post_meta($post->ID, 'review_game_title', true),
-            'description'   => \get_post_meta($post->ID, 'review_description', true),
-            'title'         => $post->post_title,
-            'date'          => \get_the_time('j/F/Y', $post),
+            'game_title'    => \addslashes(\get_post_meta($post->ID, 'review_game_title', true)),
+            'description'   => \addslashes(\get_post_meta($post->ID, 'review_description', true)),
+            'title'         => \addslashes($post->post_title),
+            'date'          => \get_the_time('d/m/Y', $post),
             'author'        => \get_the_author_meta('display_name', $post->post_author),
             'url'           => \get_the_permalink($post)
 
